@@ -2,7 +2,6 @@
 
 int main() {
 	Circle waffle(30);
-	increase(waffle);
+	increase(&waffle);
 	cout << waffle.getRadius() << endl;
-	cout << waffle.publicRadius << endl;
 }
