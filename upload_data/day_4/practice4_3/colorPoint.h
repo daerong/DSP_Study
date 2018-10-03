@@ -1,5 +1,7 @@
 #include "standard.h"
 
+typedef enum COLORSET {};
+
 // 2차원 평면에서 한 점을 표현하는 클래스 Point 선언
 class Point {
 	int x, y; //한 점 (x,y) 좌표값
@@ -16,8 +18,14 @@ class ColorPoint : public Point {
 public:
 	void setColor(string color) { this->color = color; }
 	void showColorPoint();
+	//void showParent();		
+	// 형식지정자 생략시 pribate 적용. 따라서 자식클래스에서 사용불가
 };
 void ColorPoint::showColorPoint() {
 	cout << color << ":";
 	showPoint(); // Point class showPoint() 호출
+}
+
+//void ColorPoint::showParent() {
+//	cout << "(" << x << "," << y << ")" << endl;
 }
