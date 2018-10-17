@@ -7,14 +7,16 @@
 ###### 포인터 접근, 변수형 등
 
 ## DAY_2
-### 도형 넓이 계산 프로그램
+### 도형 넓이 계산 프로그램(과제 2차)
 ###### 삼각형, 사각형, 원, 사다리꼴의 넓이를 계산해주는 계산기, 문제를 풀고 답을 확인할 수 있다.
+![5](https://user-images.githubusercontent.com/26676087/47061536-d16fb680-d20c-11e8-9b17-8c4efe3a41c8.PNG)
+![9](https://user-images.githubusercontent.com/26676087/47061543-d6cd0100-d20c-11e8-9d81-9a5ed5179c56.PNG)
 ### 그 외
 ###### 헤더파일 별도 관리
 
 ## DAY_4
 ### Calculator
-###### 문제를 풀고 정답을 맞출 수 있는 계산기
+###### 문제를 풀고 정답을 맞출 수 있는 계산기(과제 1차)
 ![1](https://user-images.githubusercontent.com/26676087/47060593-36c1a880-d209-11e8-817c-9e5aee28c203.PNG)
 ![7](https://user-images.githubusercontent.com/26676087/47060617-49d47880-d209-11e8-9bc5-134f58419334.PNG)
 ### 그 외
