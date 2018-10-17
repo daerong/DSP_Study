@@ -14,7 +14,13 @@
 ![default](https://user-images.githubusercontent.com/26676087/47059856-104e3e00-d206-11e8-862d-52c8387c7f09.PNG)
 ### What is signal
 ###### 신호의 파형에 영향을 주는 각 파라미터를 변경해보며 신호를 이해해본다. 또한 합성된 신호에 대한 해석을 해보자.
+1. 각 파라미터가 신호의 파형에 미치는 영향
+![_1](https://user-images.githubusercontent.com/26676087/47060182-8acb8d80-d207-11e8-828b-d9d390f1dc2f.PNG)
+2. 서로 다른 주파수가 섞인 신호
 ![_2_](https://user-images.githubusercontent.com/26676087/47060076-07aa3780-d207-11e8-93d6-d3229e432fe0.PNG)
+3. 샘플링 주파수의 이해
+![_1](https://user-images.githubusercontent.com/26676087/47060296-0f1e1080-d208-11e8-94dc-9694f67a7254.PNG)
+4. 여러 주기 신호가 합성되었을 때
 ![_3_](https://user-images.githubusercontent.com/26676087/47060078-0973fb00-d207-11e8-8398-3cad2ed95c79.PNG)
 
 ## DAY_6
