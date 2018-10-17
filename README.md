@@ -7,6 +7,10 @@
 ## DAY_3
 
 ## DAY_4
+### Calculator
+###### 문제를 풀고 정답을 맞출 수 있는 
+![1](https://user-images.githubusercontent.com/26676087/47060593-36c1a880-d209-11e8-817c-9e5aee28c203.PNG)
+![7](https://user-images.githubusercontent.com/26676087/47060617-49d47880-d209-11e8-9bc5-134f58419334.PNG)
 
 ## DAY_5
 ### Menu bar
