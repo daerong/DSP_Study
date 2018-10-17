@@ -13,7 +13,9 @@
 ###### 리소스 뷰의 Menu에서 편집기를 통해 메뉴를 생성하고 ID를 할당한 뒤 해당하는 기능을 작성하여 신호의 합성을 확인해보았다.
 ![default](https://user-images.githubusercontent.com/26676087/47059856-104e3e00-d206-11e8-862d-52c8387c7f09.PNG)
 ### What is signal
-###### 신호의 파형에 영향을 주는 각 파라미터를 변경해보며 신호를 이해해본다.
+###### 신호의 파형에 영향을 주는 각 파라미터를 변경해보며 신호를 이해해본다. 또한 합성된 신호에 대한 해석을 해보자.
+![_2_](https://user-images.githubusercontent.com/26676087/47060076-07aa3780-d207-11e8-93d6-d3229e432fe0.PNG)
+![_3_](https://user-images.githubusercontent.com/26676087/47060078-0973fb00-d207-11e8-8398-3cad2ed95c79.PNG)
 
 ## DAY_6
 ### Analog to Digtal
