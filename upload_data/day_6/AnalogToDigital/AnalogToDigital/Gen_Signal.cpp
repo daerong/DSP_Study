@@ -1,76 +1,42 @@
 #include "StdAfx.h" 
 #include "Gen_Signal.h"
 
-/* Disp_Coor()에서 사용 */
-#define X_Start 20
-#define Y_Start 20
-#define X_End X_Start+1024
-#define Y_End Y_Start+750
-#define Y_Depth 3
-#define Y_Raise 150
-/* Disp_Coor()에서 사용 */
-
-/* Gen_Signal()에서 사용 */
-#define Pi 3.14159
-#define FreQ 1			//1Hz 주파수
-#define DATA_No 512		//1주기data수
-#define M 0.5			//신호크기배율
-#include <math.h>
-
-/* Gen_Signal()에서 사용 */
-
 Gen_Signal::Gen_Signal() {
+	Signal_Data = new double[1024];		// default data size
+	m_dataVolume = 1024;
+}
+
+Gen_Signal::Gen_Signal(CString style, int amplitude, int frequency, int sampling) : m_string(style), m_Amplitude(amplitude), m_Frequency(frequency), DATA_No(sampling) {
+	Signal_Data = new double[1024];		// default data size
+	m_dataVolume = 1024;
+}
+
+Gen_Signal::~Gen_Signal() {
+	delete Signal_Data;
 } 
-Gen_Signal::~Gen_Signal() { 
-} 
-void Gen_Signal::Signal_Data() { 
-	int x, m_freQ;
+
+void Gen_Signal::setStyle(CString style) { m_string = style; }
+void Gen_Signal::setAmp(double amplitude) { m_Amplitude = amplitude; }
+void Gen_Signal::setFreq(int frequency) { m_Frequency = frequency; }
+void Gen_Signal::setSampling(int sampling) { DATA_No = sampling; }
+void Gen_Signal::setVolume(int volume) {
+	delete Signal_Data;
+	Signal_Data = new double[volume];
+	m_dataVolume = volume;
+}
+
+//int Gen_Signal::getSampleVolume() { return DATA_No; }
+
+void Gen_Signal::Make_Signal() { 
 
 	if((m_string) == "sin") { 
-		m_freQ = 1;
-		for (x = 0; x < X_End - X_Start; x++)
-		{
-			Text1 = "Sin함수, f = 1[Hz], N = 512[Hz]";
-			Signal_Data1[x] = M * sin((2 * Pi * m_freQ / DATA_No)*x + Pi / 2);
+		for (int x = 0; x < m_dataVolume; x++) {
+			Signal_Data[x] = m_Amplitude * sin((2 * Pi * m_Frequency / DATA_No)*x + Pi / 2);
 		}
-
-		m_freQ = 3;
-		for (x = 0; x < X_End - X_Start; x++)
-		{
-			Text2 = "Sin함수, f = 3[Hz], N = 512[Hz]";
-			Signal_Data2[x] = M * sin((2 * Pi * m_freQ / DATA_No)*x + Pi / 2);
+	}
+	else if ((m_string) == "cos") {
+		for (int x = 0; x < m_dataVolume; x++) {
+			Signal_Data[x] = m_Amplitude * cos((2 * Pi * m_Frequency / DATA_No)*x + Pi / 2);
 		}
-
-		m_freQ = 9;
-		for (x = 0; x < X_End - X_Start; x++)
-		{
-			Text3 = "Sin함수, f = 9[Hz], N = 512[Hz]";
-			Signal_Data3[x] = M * sin((2 * Pi * m_freQ / DATA_No)*x + Pi / 2);
-		}
-	} 
-	else if((m_string) == "cos") { 
-		m_freQ = 1;
-		for (x = 0; x < X_End - X_Start; x++)
-		{
-			Text1 = "Cos함수, f = 1[Hz], N = 512[Hz]";
-			Signal_Data1[x] = M * cos((2 * Pi * m_freQ / DATA_No)*x + Pi / 2);
-		}
-
-		m_freQ = 3;
-		for (x = 0; x < X_End - X_Start; x++)
-		{
-			Text2 = "Cos함수, f = 3[Hz], N = 512[Hz]";
-			Signal_Data2[x] = M * cos((2 * Pi * m_freQ / DATA_No)*x + Pi / 2);
-		}
-
-		m_freQ = 9;
-		for (x = 0; x < X_End - X_Start; x++)
-		{
-			Text3 = "Cos함수, f = 9[Hz], N = 512[Hz]";
-			Signal_Data3[x] = M * cos((2 * Pi * m_freQ / DATA_No)*x + Pi / 2);
-		}
-	} 
-
-
-	
+	}
 }
