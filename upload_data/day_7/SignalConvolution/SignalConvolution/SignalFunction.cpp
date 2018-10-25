@@ -13,12 +13,15 @@ SignalFunction::SignalFunction(int dataVolume) : m_DataArrSize(dataVolume)
 }
 SignalFunction::~SignalFunction()
 {
-	if (m_SigResult != NULL) delete m_SigResult;
+	delete m_SigResult;
 }
 
 void SignalFunction::setVolume(int dataVolume) {
 	m_DataArrSize = dataVolume;
-	if (m_SigResult != NULL) delete m_SigResult;
+	
+	delete m_SigResult;
+	m_SigResult = NULL;
+
 	m_SigResult = new double[dataVolume];
 	for (int i = 0; i < m_DataArrSize; i++) {
 		m_SigResult[i] = 0.0;
@@ -29,19 +32,41 @@ int SignalFunction::convolution(double inputSig[], int InputWidth, double TransS
 	double resizeFactor = 0.0;
 
 	m_DataArrSize = InputWidth + TransWidth;
-	if (m_SigResult != NULL) delete m_SigResult;
+	
+	double *reverseInput = new double[InputWidth];
+	for (int i = 0; i < InputWidth; i++) {
+		reverseInput[i] = 0.0;
+	}
+	for (int i = 0; i < InputWidth; i++) {
+		reverseInput[i] = inputSig[InputWidth - 1 - i];
+	}
+
+	delete m_SigResult;
+	m_SigResult = NULL;
+
 	m_SigResult = new double[m_DataArrSize];
 	for (int i = 0; i < m_DataArrSize; i++) {
 		m_SigResult[i] = 0.0;
 	}
 
+	double convolutionResult = 0.0;
+
 	for (int i = 0; i < m_DataArrSize; i++) {
-		double convolutionResult = 0.0;
-		for (int j = 0; j <= i; j++) {
-			convolutionResult += inputSig[j] * TransSig[i - j];
+		convolutionResult = 0.0;
+		if (i < InputWidth) {
+			for (int j = 0; j <= i; j++) {
+				convolutionResult += reverseInput[InputWidth - 1 - (i - j)] * TransSig[j];
+			}
+			m_SigResult[i] = convolutionResult;
+			if (resizeFactor < m_SigResult[i]) { resizeFactor = m_SigResult[i]; }
 		}
-		m_SigResult[i] = convolutionResult;
-		if (resizeFactor < m_SigResult[i]) { resizeFactor = m_SigResult[i]; }
+		else {
+			for (int j = i - InputWidth; j <= TransWidth; j++) {
+				convolutionResult += reverseInput[j - (i - InputWidth)] * TransSig[j];
+			}
+			m_SigResult[i] = convolutionResult;
+			if (resizeFactor < m_SigResult[i]) { resizeFactor = m_SigResult[i]; }
+		}
 	}
 
 	for (int i = 0; i < m_DataArrSize; i++) { m_SigResult[i] /= resizeFactor; }
