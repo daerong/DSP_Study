@@ -14,7 +14,7 @@ GenSignal::GenSignal(int dataVolume) : m_Type(""), m_Amplitude(1), m_DataArrSize
 }
 
 GenSignal::~GenSignal() {
-	if(m_SigData != NULL) delete m_SigData;
+	delete m_SigData;
 } 
 
 void GenSignal::setStyle(CString style) { m_Type = style; }
@@ -22,7 +22,10 @@ void GenSignal::setStyle(char *style) { m_Type = style; }
 void GenSignal::setAmp(double amplitude) { m_Amplitude = amplitude; }
 void GenSignal::setVolume(int dataVolume) { 
 	m_DataArrSize = dataVolume; 
-	if(m_SigData != NULL) delete m_SigData;
+	
+	delete m_SigData;
+	m_SigData = NULL;
+	
 	m_SigData = new double[dataVolume];
 	for (int i = 0; i < m_DataArrSize; i++) {
 		m_SigData[i] = 0.0;

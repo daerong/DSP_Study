@@ -13,12 +13,15 @@ DrawSignal::DrawSignal(int dataVolume) : m_DataArrSize(dataVolume), m_Interval(1
 	}
 }
 DrawSignal::~DrawSignal() {
-	if (m_SigData != NULL) delete m_SigData;
+	delete m_SigData;
 }
 
 void DrawSignal::setVolume(int dataVolume) {
 	m_DataArrSize = dataVolume;
-	if (m_SigData != NULL) delete m_SigData;
+	
+	delete m_SigData;
+	m_SigData = NULL;
+
 	m_SigData = new double[dataVolume];
 	for (int i = 0; i < m_DataArrSize; i++) {
 		m_SigData[i] = 0.0;
@@ -32,7 +35,10 @@ void DrawSignal::setSignal(double inputData[]) {	// inputData의 크기가 작을 경우
 }
 void DrawSignal::setSignal(double inputData[], int volume) {
 	if (m_DataArrSize != volume) {
-		if (m_SigData != NULL) delete m_SigData;
+
+		delete m_SigData;
+		m_SigData = NULL;
+
 		m_SigData = new double[volume];
 		m_DataArrSize = volume;
 		for (int i = 0; i < m_DataArrSize; i++) {
