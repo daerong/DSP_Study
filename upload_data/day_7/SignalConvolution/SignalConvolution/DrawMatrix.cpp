@@ -32,6 +32,8 @@ void DrawMatrix::SetDivide(int col, int row) {
 }
 
 void DrawMatrix::StartDraw(CDC *pDC) {
+	if (m_Row < 0) return;
+	else if (m_Col < 0) return;
 	int width_Div = (m_EndX - m_StartX) / m_Row;
 	int height_DIv = (m_EndY - m_StartY) / m_Col;
 
