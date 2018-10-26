@@ -52,3 +52,4 @@
 ## DAY_7
 ### Convolution
 ###### 신호와 전달함수간의 연산인 Convolution에 대해 이해하고 이를 수행하는 프로그램을 작성해보자.
+![1](https://user-images.githubusercontent.com/26676087/47537972-b59e9b80-d903-11e8-9a0c-056b657796a2.PNG)
