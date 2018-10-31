@@ -89,3 +89,26 @@ void GenSignal::makeUniform() {
 		}
 	}
 }
+void GenSignal::makeTriangular(int start, int width) {
+	for (int i = 0; i < m_DataArrSize; i++) {
+		m_SigData[i] = 0.0;
+	}
+	if (m_Type == "Triangular" || m_Type == "tri") {
+		for (int x = start; x < start + width / 2; x++) {
+			m_SigData[x] = (x - start) * m_Amplitude / (width / 2);
+		}
+		for (int x = start + width / 2; x < start + width; x++) {
+			m_SigData[x] = (start + width - x) * m_Amplitude / (width / 2);
+		}
+	}
+}
+void GenSignal::makeRectangle(int start, int width) {
+	for (int i = 0; i < m_DataArrSize; i++) {
+		m_SigData[i] = 0.0;
+	}
+	if (m_Type == "Rectangle" || m_Type == "rect") {
+		for (int x = start; x < start + width; x++) {
+			m_SigData[x] = m_Amplitude;
+		}
+	}
+}
