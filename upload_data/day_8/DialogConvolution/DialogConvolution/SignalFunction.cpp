@@ -74,7 +74,7 @@ int SignalFunction::convolution(double inputSig[], int InputWidth, int inputSign
 
 	for (int i = 0; i < m_DataArrSize; i++) { m_SigResult[i] /= resizeFactor; }
 
-	*resultStart = reverseInputStart;
+	*resultStart = ConvSignalStart;
 	return m_DataArrSize;
 }
 

@@ -96,34 +96,64 @@ void GenSignal::makeTriangular(int median, int width) {
 
 	int halfWidth = width / 2;
 	int startX = median - halfWidth;								// Tri 파형의 시작위치 확인
-
+	int endX = median + halfWidth;
 
 	if (m_Type == "Triangular" || m_Type == "tri") {
 		if (startX < 0) {															// 0보다 작은 지점에서 시작할 경우, 잘못된 접근 방지
 			for (int x = 0; x < median; x++) {
 				m_SigData[x] = m_Amplitude / halfWidth * (x - startX);
 			}
-			for (int x = median; x < median + halfWidth || x < m_DataArrSize; x++) {
-				m_SigData[x] = m_Amplitude - m_Amplitude / (halfWidth) * (x - median);
-			}
 		}
 		else {
 			for (int x = startX; x < median; x++) {
 				m_SigData[x] = m_Amplitude / halfWidth * (x - startX);
 			}
-			for (int x = median; x < median + width / 2 || x < m_DataArrSize; x++) {
+		}
+
+		if (endX > m_DataArrSize) {
+			for (int x = median;x < m_DataArrSize; x++) {
+				m_SigData[x] = m_Amplitude - m_Amplitude / (halfWidth) * (x - median);
+			}
+		}
+		else {
+			for (int x = median; x < endX; x++) {
 				m_SigData[x] = m_Amplitude - m_Amplitude / (halfWidth) * (x - median);
 			}
 		}	
 	}
 }
+
 void GenSignal::makeRectangle(int median, int width) {
 	for (int i = 0; i < m_DataArrSize; i++) {
 		m_SigData[i] = 0.0;
 	}
+
+	int halfWidth = width / 2;
+	int startX = median - halfWidth;								// Rect 파형의 시작위치 확인
+	int endX = median + halfWidth;
+
+
 	if (m_Type == "Rectangle" || m_Type == "rect") {
-		for (int x = median; x < median + width; x++) {
-			m_SigData[x] = m_Amplitude;
+		if (startX < 0) {															// 0보다 작은 지점에서 시작할 경우, 잘못된 접근 방지
+			for (int x = 0; x < median; x++) {
+				m_SigData[x] = m_Amplitude;
+			}
+		}
+		else {
+			for (int x = startX; x < median; x++) {
+				m_SigData[x] = m_Amplitude;
+			}
+		}
+
+		if (endX > m_DataArrSize) {
+			for (int x = median; x < m_DataArrSize; x++) {
+				m_SigData[x] = m_Amplitude;
+			}
+		}
+		else {
+			for (int x = median; x < endX; x++) {
+				m_SigData[x] = m_Amplitude;
+			}
 		}
 	}
 }
