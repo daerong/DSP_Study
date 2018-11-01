@@ -58,3 +58,7 @@
 ### Convolution(Using New Dialog)
 ###### 입력신호와 전달함수의 생성부를 새로운 Dialog에서 한번에 실행할 수 있도록 함
 ![2](https://user-images.githubusercontent.com/26676087/47763296-70afa600-dd03-11e8-94be-f26047915f3b.PNG)
+### Convolution(좌표평면 사용)
+###### 기존 Matrix 상에서 Rect 및 Tri, Impulse 함수의 테스트가 어려워 음수 영역으로 확장
+![tri_rect](https://user-images.githubusercontent.com/26676087/47830081-ae790100-ddcd-11e8-8398-162a5b909d1e.PNG)
+![uniform_sin](https://user-images.githubusercontent.com/26676087/47830083-afaa2e00-ddcd-11e8-9030-d32d87106e9a.PNG)
