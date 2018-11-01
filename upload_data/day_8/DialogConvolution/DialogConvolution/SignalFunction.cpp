@@ -28,12 +28,12 @@ void SignalFunction::setVolume(int dataVolume) {
 	}
 }
 
-int SignalFunction::convolution(double inputSig[], int InputWidth, double TransSig[], int TransWidth) {	
+int SignalFunction::convolution(double inputSig[], int InputWidth, int inputSignalStart, double TransSig[], int TransWidth, int transSignalStart, int *resultStart) {
 	double resizeFactor = 0.0;
 
-	m_DataArrSize = InputWidth + TransWidth;
+	m_DataArrSize = InputWidth + TransWidth;			// 총 길이
 	
-	double *reverseInput = new double[InputWidth];
+	double *reverseInput = new double[InputWidth];		// input을 뒤집은 함수
 	for (int i = 0; i < InputWidth; i++) {
 		reverseInput[i] = 0.0;
 	}
@@ -41,14 +41,17 @@ int SignalFunction::convolution(double inputSig[], int InputWidth, double TransS
 		reverseInput[i] = inputSig[InputWidth - 1 - i];
 	}
 
+	int reverseInputStart = -1 * (InputWidth + inputSignalStart);		// 뒤집어진 함수의 시작점
+
 	delete m_SigResult;
 	m_SigResult = NULL;
 
-	m_SigResult = new double[m_DataArrSize];
+	m_SigResult = new double[m_DataArrSize];			// convolution 연산 후 데이터가 저장될 배열
 	for (int i = 0; i < m_DataArrSize; i++) {
 		m_SigResult[i] = 0.0;
 	}
 
+	int ConvSignalStart = transSignalStart + inputSignalStart;			// convolution 연산 후 데이터의 시작점
 	double convolutionResult = 0.0;
 
 	for (int i = 0; i < m_DataArrSize; i++) {
@@ -71,6 +74,7 @@ int SignalFunction::convolution(double inputSig[], int InputWidth, double TransS
 
 	for (int i = 0; i < m_DataArrSize; i++) { m_SigResult[i] /= resizeFactor; }
 
+	*resultStart = reverseInputStart;
 	return m_DataArrSize;
 }
 

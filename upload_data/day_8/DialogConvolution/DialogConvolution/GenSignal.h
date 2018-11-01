@@ -27,8 +27,8 @@ public :
 	void makeImpulse(int position);
 	void makeImpulseTrain(int interval);
 	void makeUniform();
-	void makeTriangular(int start, int width);
-	void makeRectangle(int start, int width);
+	void makeTriangular(int median, int width);
+	void makeRectangle(int median, int width);
 
 public:
 	double *m_SigData;				// 실제 신호가 저장되는 배열

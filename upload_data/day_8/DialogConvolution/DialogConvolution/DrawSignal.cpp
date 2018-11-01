@@ -48,8 +48,8 @@ void DrawSignal::setSignal(double inputData[], int volume) {
 	memcpy(m_SigData, inputData, sizeof(double)*m_DataArrSize);
 }
 
-void DrawSignal::drawWave(CDC* pDC, CPoint CP, BYTE red, BYTE blue, BYTE green) {
-	int start_x = CP.x;
+void DrawSignal::drawWave(CDC* pDC, CPoint CP, int sigStart, BYTE red, BYTE blue, BYTE green) {
+	int start_x = CP.x + sigStart;
 	int start_y = CP.y;
 
 	CPen pen(PS_SOLID, 1, RGB(red, blue, green));
@@ -67,8 +67,8 @@ void DrawSignal::drawWave(CDC* pDC, CPoint CP, BYTE red, BYTE blue, BYTE green) 
 	pDC->SelectObject(pOldPen);
 }
 
-void DrawSignal::drawDot(CDC* pDC, CPoint CP, BYTE red, BYTE blue, BYTE green) {
-	int start_x = CP.x;
+void DrawSignal::drawDot(CDC* pDC, CPoint CP, int sigStart, BYTE red, BYTE blue, BYTE green) {
+	int start_x = CP.x + sigStart;
 	int start_y = CP.y;
 
 	for (int t = 0; t < m_DataArrSize; t += m_Interval) {
@@ -76,8 +76,8 @@ void DrawSignal::drawDot(CDC* pDC, CPoint CP, BYTE red, BYTE blue, BYTE green) {
 	}
 }
 
-void DrawSignal::drawImpulse(CDC* pDC, CPoint CP, BYTE red, BYTE blue, BYTE green) {
-	int start_x = CP.x;
+void DrawSignal::drawImpulse(CDC* pDC, CPoint CP, int sigStart, BYTE red, BYTE blue, BYTE green) {
+	int start_x = CP.x + sigStart;
 	int start_y = CP.y;
 
 	CPen pen(PS_SOLID, 1, RGB(red, blue, green));
@@ -94,8 +94,8 @@ void DrawSignal::drawImpulse(CDC* pDC, CPoint CP, BYTE red, BYTE blue, BYTE gree
 	pDC->SelectObject(pOldPen);
 }
 
-void DrawSignal::drawStair(CDC* pDC, CPoint CP, BYTE red, BYTE blue, BYTE green) {
-	int start_x = CP.x;
+void DrawSignal::drawStair(CDC* pDC, CPoint CP, int sigStart, BYTE red, BYTE blue, BYTE green) {
+	int start_x = CP.x + sigStart;
 	int start_y = CP.y;
 
 	CPen pen(PS_SOLID, 1, RGB(red, blue, green));
