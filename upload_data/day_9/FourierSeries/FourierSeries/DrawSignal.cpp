@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "DrawSignal.h"
 
+#define M 50			// πË¿≤(Magnification)
 
 DrawSignal::DrawSignal() : m_DataArrSize(1024), m_Interval(1)
 {

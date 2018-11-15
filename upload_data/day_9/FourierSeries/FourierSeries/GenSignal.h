@@ -10,6 +10,9 @@ private :
 	double m_Amplitude;
 	int m_DataArrSize;				// 저장할 갯수
 
+public:
+	double *m_SigData;				// 실제 신호가 저장되는 배열
+
 public :
 	GenSignal();
 	GenSignal(int dataVolume);
@@ -30,6 +33,5 @@ public :
 	void makeTriangular(int median, int width);
 	void makeRectangle(int median, int width);
 
-public:
-	double *m_SigData;				// 실제 신호가 저장되는 배열
+
 };

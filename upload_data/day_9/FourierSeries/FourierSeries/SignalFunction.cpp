@@ -8,37 +8,25 @@ SignalFunction::SignalFunction() : m_DataArrSize(1024)
 }
 SignalFunction::SignalFunction(int dataVolume) : m_DataArrSize(dataVolume)
 {
-	m_SigResult_Sin = new double[dataVolume];
+	m_SigResult = new double[dataVolume];
 	for (int i = 0; i < dataVolume; i++) {
-		m_SigResult_Sin[i] = 0.0;
-		m_SigResult_Cos[i] = 0.0;
 		m_SigResult[i] = 0.0;
 	}
 }
 SignalFunction::~SignalFunction()
 {
-	delete m_SigResult_Sin;
-	delete m_SigResult_Cos;
 	delete m_SigResult;
 }
 
 void SignalFunction::setVolume(int dataVolume) {
 	m_DataArrSize = dataVolume;
-	
-	delete m_SigResult_Sin;
-	delete m_SigResult_Cos;
-	delete m_SigResult;
-	m_SigResult_Sin = NULL;
-	m_SigResult_Cos = NULL;
-	m_SigResult;
 
-	m_SigResult_Sin = new double[dataVolume];
-	m_SigResult_Cos = new double[dataVolume];
+	delete m_SigResult;
+	m_SigResult = NULL;
+
 	m_SigResult = new double[dataVolume];
 
 	for (int i = 0; i < m_DataArrSize; i++) {
-		m_SigResult_Sin[i] = 0.0;
-		m_SigResult_Cos[i] = 0.0;
 		m_SigResult[i] = 0.0;
 	}
 }
@@ -95,33 +83,39 @@ int SignalFunction::convolution(double inputSig[], int InputWidth, int inputSign
 	return m_DataArrSize;
 }
 
-void SignalFunction::fourierTransform(double inputSig[], int InputWidth, int resultWidth, int m_FS_Freq, int m_CoeNo) {
+void SignalFunction::fourierSeries(char *type, double inputSig[], int InputWidth, int resultWidth, int m_FS_Freq) {
 	m_DataArrSize = resultWidth;
 
-	if (m_CoeNo > InputWidth) return;			// 배열 overflow 방지
-
-	delete m_SigResult_Sin;
-	delete m_SigResult_Cos;
-	m_SigResult_Sin = NULL;
-	m_SigResult_Cos = NULL;
+	delete m_SigResult;
+	m_SigResult = NULL;
 	
-	m_SigResult_Sin = new double[m_DataArrSize];			// fourierTransform 연산 후 데이터가 저장될 배열
-	m_SigResult_Cos = new double[m_DataArrSize];
+	m_SigResult = new double[m_DataArrSize];			// fourierTransform 연산 후 데이터가 저장될 배열
 
 	for (int i = 0; i < m_DataArrSize; i++) {
-		m_SigResult_Sin[i] = 0.0;
-		m_SigResult_Cos[i] = 0.0;
+		m_SigResult[i] = 0.0;
 	}
 
-	for (int n = 0; n < m_DataArrSize; n++)
-	{
-		m_SigResult_Sin[n] = 0.0;
-		m_SigResult_Cos[n] = 0.0;
+	if (type == "sin" || type == "Sin") {
+		for (int n = 0; n < m_DataArrSize; n++) {
+			m_SigResult[n] = 0.0;
 
-		for (int i = 1; i < m_CoeNo; i += 1)
-		{            
-			m_SigResult_Sin[n] += inputSig[i] * sin(2 * PI*i*n / m_FS_Freq);
-			m_SigResult_Cos[n] += inputSig[i] * cos(2 * PI*i*n / m_FS_Freq);
+			for (int i = 1; i < InputWidth; i += 1) {
+				m_SigResult[n] += inputSig[i] * sin(2 * PI*i*n / m_FS_Freq);
+			}
+		}
+	}
+	else if (type == "cos" || type == "Cos") {
+		for (int n = 0; n < m_DataArrSize; n++) {
+			m_SigResult[n] = 0.0;
+
+			for (int i = 1; i < InputWidth; i += 1) {
+				m_SigResult[n] += inputSig[i] * cos(2 * PI*i*n / m_FS_Freq);
+			}
+		}
+	}
+	else {
+		for (int n = 0; n < m_DataArrSize; n++) {
+			m_SigResult[n] = 0.5;
 		}
 	}
 }

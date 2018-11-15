@@ -1,11 +1,13 @@
 #pragma once
-#define M 50			// 배율(Magnification)
 
 class DrawSignal
 {
 private:
 	int m_DataArrSize;				// 저장할 갯수
 	int m_Interval;
+
+public:
+	double *m_SigData;				// 실제 신호가 저장되는 배열
 
 public:
 	DrawSignal();
@@ -22,7 +24,6 @@ public:
 	void drawImpulse(CDC* pDC, CPoint CP, int sigStart, BYTE red, BYTE blue, BYTE green);
 	void drawStair(CDC* pDC, CPoint CP, int sigStart, BYTE red, BYTE blue, BYTE green);
 
-public:
-	double *m_SigData;				// 실제 신호가 저장되는 배열
+
 };
 
