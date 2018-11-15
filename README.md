@@ -63,3 +63,10 @@
 [프로젝트파일 다운로드 하기](https://drive.google.com/open?id=1RC_xvSqM86kVcwXQZOw-PI6ZdvLvOfTU)
 ![tri_rect](https://user-images.githubusercontent.com/26676087/47830081-ae790100-ddcd-11e8-8398-162a5b909d1e.PNG)
 ![uniform_sin](https://user-images.githubusercontent.com/26676087/47830083-afaa2e00-ddcd-11e8-9030-d32d87106e9a.PNG)
+
+## DAY_9
+### Fourier Series
+###### 푸리에 계수를 이용해 원 함수를 구성하여 만들어내는 프로그램. "주기함수는 조화함수의 합으로 나타낼 수 있다."의 실험적 해석
+[프로젝트파일 다운로드 하기](https://drive.google.com/open?id=1QQ-7oYKoqEToLc2Vdcn5qMwV4ehXTKj2)
+![default](https://user-images.githubusercontent.com/26676087/48199434-57f85d80-e39f-11e8-98d6-a7cc72d565ff.PNG)
+
