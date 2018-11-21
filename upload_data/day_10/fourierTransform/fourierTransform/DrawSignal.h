@@ -23,6 +23,7 @@ public:
 	void drawDot(CDC* pDC, CPoint CP, int sigStart, BYTE red, BYTE blue, BYTE green);
 	void drawImpulse(CDC* pDC, CPoint CP, int sigStart, BYTE red, BYTE blue, BYTE green);
 	void drawImpulseNormalize(CDC* pDC, CPoint CP, int sigStart, BYTE red, BYTE blue, BYTE green);
+	void drawImpulseNormalizeFourier(CDC* pDC, CPoint CP, int sigStart, BYTE red, BYTE blue, BYTE green);
 	void drawStair(CDC* pDC, CPoint CP, int sigStart, BYTE red, BYTE blue, BYTE green);
 
 

@@ -122,8 +122,47 @@ void DrawSignal::drawImpulseNormalize(CDC* pDC, CPoint CP, int sigStart, BYTE re
 	CString Text;
 	Text.Format(_T("%f"), normalizeFactor);
 	pDC->TextOut(30, 30, Text);
+}
 
+void DrawSignal::drawImpulseNormalizeFourier(CDC* pDC, CPoint CP, int sigStart, BYTE red, BYTE blue, BYTE green) {
+	int start_x = CP.x + sigStart;
+	int start_y = CP.y;
 
+	CPen pen(PS_SOLID, 1, RGB(red, blue, green));
+	CPen *pOldPen = pDC->SelectObject(&pen);
+
+	int yData;
+
+	double normalizeFactor = 0.0;
+
+	for (int t = 0; t < m_DataArrSize; t += m_Interval) {
+		if (m_SigData[t] > normalizeFactor) normalizeFactor = m_SigData[t];
+		else if (-1 * m_SigData[t] > normalizeFactor)  normalizeFactor = -1 * m_SigData[t];
+	}
+
+	double swap = 0.0;
+
+	for (int i = 0; i < m_DataArrSize/2; i++) {
+		//swap = m_SigData[m_DataArrSize / 2 - 1 - i];
+		//m_SigData[m_DataArrSize/2 -1 - i] = m_SigData[i];
+		//m_SigData[i] = swap;
+
+		swap = m_SigData[m_DataArrSize - 1 - i];
+		m_SigData[m_DataArrSize - 1 - i] = m_SigData[m_DataArrSize / 2 - i];
+		m_SigData[m_DataArrSize / 2 - i] = swap;
+	}
+
+	for (int t = 0; t < m_DataArrSize; t += m_Interval) {
+		yData = start_y - (int)round(m_SigData[t] * M / normalizeFactor);
+		pDC->MoveTo(start_x + t, start_y);
+		pDC->LineTo(start_x + t, yData);
+	}
+
+	pDC->SelectObject(pOldPen);
+
+	CString Text;
+	Text.Format(_T("%f"), normalizeFactor);
+	pDC->TextOut(30, 30, Text);
 }
 
 void DrawSignal::drawStair(CDC* pDC, CPoint CP, int sigStart, BYTE red, BYTE blue, BYTE green) {
