@@ -118,10 +118,6 @@ void DrawSignal::drawImpulseNormalize(CDC* pDC, CPoint CP, int sigStart, BYTE re
 	}
 
 	pDC->SelectObject(pOldPen);
-
-	CString Text;
-	Text.Format(_T("%f"), normalizeFactor);
-	pDC->TextOut(30, 30, Text);
 }
 
 void DrawSignal::drawImpulseNormalizeFourier(CDC* pDC, CPoint CP, int sigStart, BYTE red, BYTE blue, BYTE green) {
