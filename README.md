@@ -70,3 +70,18 @@
 [프로젝트파일 다운로드 하기](https://drive.google.com/open?id=1QQ-7oYKoqEToLc2Vdcn5qMwV4ehXTKj2)
 ![default](https://user-images.githubusercontent.com/26676087/48199434-57f85d80-e39f-11e8-98d6-a7cc72d565ff.PNG)
 
+## DAY_10
+### Fourier Transform
+###### 시간영역의 신호를 주파수 영역의 스펙트럼으로 해석하기 위해 변환을 진행.
+![impulse-tri](https://user-images.githubusercontent.com/26676087/50433602-8e247900-091c-11e9-9f0c-3bcec12c5df2.PNG)
+
+## DAY_11
+### Correlation
+###### 랜덤 프로세스의 비슷한 정도를 나타내는 하나의 척도인 상관(Correlation)에 대해 알아보고 잡음을 부가하여 실험해 본다.
+![5](https://user-images.githubusercontent.com/26676087/50433610-9bd9fe80-091c-11e9-927d-ea0daf80679d.PNG)
+
+## DAY_12
+### Filter
+###### Ideal LPF, Butterworth LPF, Chebyshev 필터를 설계한 후 해당 필터에 대한 임펄스 응답과 시스템 응답 등을 분석해보자. 
+
+
