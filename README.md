@@ -35,6 +35,7 @@
 ![default](https://user-images.githubusercontent.com/26676087/47059856-104e3e00-d206-11e8-862d-52c8387c7f09.PNG)
 ### What is signal
 ###### 신호의 파형에 영향을 주는 각 파라미터를 변경해보며 신호를 이해해본다. 또한 합성된 신호에 대한 해석을 해보자.
+[프로젝트파일 다운로드 하기](https://drive.google.com/open?id=1INfUe1d_w0wPqask8awuXsgT8rEfY4QM)
 1. 각 파라미터가 신호의 파형에 미치는 영향
 ![_1](https://user-images.githubusercontent.com/26676087/47060182-8acb8d80-d207-11e8-828b-d9d390f1dc2f.PNG)
 2. 서로 다른 주파수가 섞인 신호
@@ -47,6 +48,7 @@
 ## DAY_6
 ### Analog to Digtal
 ###### MFC 내에 사용자 Class를 생성하여 박스 생성 및 그래프를 그리는 함수를 만들고 이를 View클래스의 OnDraw함수를 통해 그려보자.
+[프로젝트파일 다운로드 하기](https://drive.google.com/open?id=1nWA82wbBa3_f1eAUTD1YtLw9SfGPHya6)
 ![default](https://user-images.githubusercontent.com/26676087/47059725-8900ca80-d205-11e8-8d52-42b9b76f4562.PNG)
 
 ## DAY_7
